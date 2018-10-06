@@ -1,6 +1,14 @@
 <h1>Matches</h1>
 <ul>
-    <% @matches.each do |match| %>
-        <li><%= match.date.strftime('%Y-%M-%d') %> - <%= match.home_team_name %> vs <%= match.away_team_name %> </li>
-    <% end %>
+  <% @matches.each do |match| %>
+    <li>
+      <h2><%= match.date.strftime('%Y-%M-%d') %> - <%= match.home_team_name %> vs <%= match.away_team_name %></h2>
+      <h3><%= match.score %></h3>
+      <ul>
+        <% match.match_events.order(:event_minute).each do |event| %>
+          <li>[<%= event.event_minute%>] <%= event.event_type%>  </li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
 </ul>

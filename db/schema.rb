@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_06_024833) do
+ActiveRecord::Schema.define(version: 2018_10_06_032816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(version: 2018_10_06_024833) do
 
   create_table "match_events", force: :cascade do |t|
     t.bigint "match_id"
-    t.datetime "timestamp", default: -> { "CURRENT_TIMESTAMP" }
-    t.string "type"
+    t.string "event_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "event_author"
+    t.integer "event_minute"
     t.index ["match_id"], name: "index_match_events_on_match_id"
   end
 
